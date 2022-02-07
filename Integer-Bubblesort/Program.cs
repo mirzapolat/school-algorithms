@@ -1,24 +1,9 @@
 ﻿using System;
 using System.Diagnostics;
 
-int[] mySortArray = new int[15];
-
-randomizeArray(ref mySortArray, 0, 9999);
-printArray(mySortArray, "Ausgangs");
-
-Stopwatch sw = new Stopwatch();
-sw.Start();
-doBubblesort(ref mySortArray);
-sw.Stop();
-
-printArray(mySortArray, "Sortiert");
-Console.ForegroundColor = ConsoleColor.Cyan;
-Console.WriteLine("\nReihe wurde sortiert in " + sw.ElapsedMilliseconds.ToString() + " ms\n");
-Console.ForegroundColor = ConsoleColor.White;
-
-Console.ReadKey();
-Environment.Exit(0);
-
+/// <summary>
+/// Gibt den Inhalt des Arrays in der Konsole aus
+/// </summary>
 void printArray(int[] arr, string reason)
 {
     Console.ForegroundColor = ConsoleColor.Yellow;
@@ -34,6 +19,9 @@ void printArray(int[] arr, string reason)
     }
 }
 
+/// <summary>
+/// Erstellt ein Zufälliges Array, sodass es später sortiert werden kann
+/// </summary>
 void randomizeArray(ref int[] givenArray, int min, int max)
 {
     Random rnd = new Random();
@@ -44,18 +32,35 @@ void randomizeArray(ref int[] givenArray, int min, int max)
     }
 }
 
-void doBubblesort(ref int[] givenArray)
+// main
+
+int[] mySortArray = new int[15];
+
+randomizeArray(ref mySortArray, 0, 9999);       // Erstellt ein zufälliges Array
+printArray(mySortArray, "Ausgangs");
+
+Stopwatch sw = new Stopwatch();                 // Stopwatch misst die Zeit, die man braucht
+sw.Start();
+
+for (int shell = 0; shell < mySortArray.Length; shell++)
 {
-    for (int shell = 0; shell < givenArray.Length; shell++)
+    for (int ptr = 1; ptr < (mySortArray.Length - shell); ptr++)
     {
-        for (int ptr = 1; ptr < (givenArray.Length - shell); ptr++)
+        if (mySortArray[ptr] < mySortArray[ptr - 1])
         {
-            if (givenArray[ptr] < givenArray[ptr - 1])
-            {
-                int save = givenArray[ptr - 1];
-                givenArray[ptr - 1] = givenArray[ptr];
-                givenArray[ptr] = save;
-            }
+            int save = mySortArray[ptr - 1];
+            mySortArray[ptr - 1] = mySortArray[ptr];
+            mySortArray[ptr] = save;
         }
     }
 }
+
+sw.Stop();
+
+printArray(mySortArray, "Sortiert");
+Console.ForegroundColor = ConsoleColor.Cyan;
+Console.WriteLine("\nReihe wurde sortiert in " + sw.ElapsedMilliseconds.ToString() + " ms\n");
+Console.ForegroundColor = ConsoleColor.White;
+
+Console.ReadKey();                              // Wartet, bis Taste gedrückt wird
+Environment.Exit(0);
