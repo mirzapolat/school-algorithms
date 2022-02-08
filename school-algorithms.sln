@@ -5,7 +5,9 @@ VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Integer-Bubblesort", "Integer-Bubblesort\Integer-Bubblesort.csproj", "{31C3680D-5EA9-487F-862C-E2A7D116D0FE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Integer-Quicksort", "Integer-Quicksort\Integer-Quicksort.csproj", "{0973A61F-0F3A-4686-8E72-71C19302321D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Integer-Quicksort", "Integer-Quicksort\Integer-Quicksort.csproj", "{0973A61F-0F3A-4686-8E72-71C19302321D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Integer-Selectionsort", "Integer-Selectionsort\Integer-Selectionsort.csproj", "{461A3F46-5C81-4B5F-B176-692A097503DD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{0973A61F-0F3A-4686-8E72-71C19302321D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0973A61F-0F3A-4686-8E72-71C19302321D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0973A61F-0F3A-4686-8E72-71C19302321D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{461A3F46-5C81-4B5F-B176-692A097503DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{461A3F46-5C81-4B5F-B176-692A097503DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{461A3F46-5C81-4B5F-B176-692A097503DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{461A3F46-5C81-4B5F-B176-692A097503DD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
