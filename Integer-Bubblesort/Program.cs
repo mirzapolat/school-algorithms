@@ -34,7 +34,7 @@ void randomizeArray(ref int[] givenArray, int min, int max)
 
 // main
 
-int[] mySortArray = new int[15];
+int[] mySortArray = new int[10000];
 
 randomizeArray(ref mySortArray, 0, 9999);       // Erstellt ein zufälliges Array
 printArray(mySortArray, "Ausgangs");
@@ -42,11 +42,11 @@ printArray(mySortArray, "Ausgangs");
 Stopwatch sw = new Stopwatch();                 // Stopwatch misst die Zeit, die man braucht
 sw.Start();
 
-for (int shell = 0; shell < mySortArray.Length; shell++)
+for (int shell = 0; shell < mySortArray.Length; shell++)            // Rahmen (shell) wird schrittweise von rechts verkleinert
 {
-    for (int ptr = 1; ptr < (mySortArray.Length - shell); ptr++)
+    for (int ptr = 1; ptr < (mySortArray.Length - shell); ptr++)    // Jedes Element im Rahmen wird beobachtet
     {
-        if (mySortArray[ptr] < mySortArray[ptr - 1])
+        if (mySortArray[ptr] < mySortArray[ptr - 1])                // Der Größte Wert im aktuellen Rahmen wird ans Ende des Rahmens transprotiert
         {
             int save = mySortArray[ptr - 1];
             mySortArray[ptr - 1] = mySortArray[ptr];

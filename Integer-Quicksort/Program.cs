@@ -33,42 +33,41 @@ void randomizeArray(ref int[] givenArray, int min, int max)
 }
 
 /// <summary>
-/// The Main Quicksort Program
+/// Sortiert Werte innerhalb des Arrays nach Größe nach dem Quicksort-Verfahren
 /// </summary>
 void quicksort(int[] givenArray, int start, int end)
 {
-    if (start > end || start < 0 || end < 0) return;
+    if (start > end || start < 0 || end < 0) return;            // Erkennt potenzielle Fehler und/oder das Ende des Sortierverfahrens
 
-    int keyvalue = partsort(givenArray, start, end);
+    int keyvalue = partsort(givenArray, start, end);            // keyvalue = Index an dem geteilt wird
 
-    if (keyvalue == -1) return;
+    if (keyvalue == -1) return;                                 // Erkennt Fehler
 
-    quicksort(givenArray, start, keyvalue - 1);
-    quicksort(givenArray, keyvalue + 1, end);
+    quicksort(givenArray, start, keyvalue - 1);                 // Selbe Prozedur wird mit beiden Teilen links
+    quicksort(givenArray, keyvalue + 1, end);                   //   und rechts des Schlüsselindexes durchgeführt.
 }
 
 /// <summary>
-/// Sorts a part of the array and returns the key index
+/// Sortiert einen Teilbereich und wählt neuen Schüsselindex aus aus
 /// </summary>
 int partsort(int[] givenArray, int left, int right) 
 {
-    if (left > right) return -1;
+    if (left > right) return -1;                                // Erkennt potenzielle Fehler
 
     int end = left;
-    int anchor = givenArray[right];
+    int anchor = givenArray[right];                             // Letzter Wert im ausgewählten Bereich wird als Ankerpunkt gewählt
 
-    for (int i = left; i < right; i++)
+    for (int i = left; i < right; i++)                          // Jedes Element im Rahmen bis auf den Ankerpunkt wird beobachtet
     {
-        if (givenArray[i] < anchor)
+        if (givenArray[i] < anchor)                             // Alle Elemente, die kleinere Werte als den Ankerpunkt haben werden auf die linke Seite platziert
         {
             swap(givenArray, i, end);
             end++;
         }
     }
 
-    swap(givenArray, end, right);
-
-    return end;
+    swap(givenArray, end, right);                               // Wenn keine kleineren Werte mehr übrig sind, wird der Ankerpunkt ans Ende der Kette platziert
+    return end;                                                 //   und zurückgegeben
 }
 
 /// <summary>
@@ -83,7 +82,7 @@ void swap(int[] array, int left, int right)
 
 // Main
 
-int[] mySortArray = new int[314];
+int[] mySortArray = new int[10];
 
 randomizeArray(ref mySortArray, 0, 9999);       // Erstellt ein zufälliges Array
 printArray(mySortArray, "Ausgangs");
