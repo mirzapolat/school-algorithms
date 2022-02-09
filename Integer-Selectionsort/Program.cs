@@ -43,7 +43,7 @@ void swap(int[] array, int left, int right)
 }
 
 /// <summary>
-/// Sortiert Werte innerhalb des Arrays nach Größe nach dem Selectionsort-Verfahren
+/// Sortiert Werte innerhalb des Arrays nach Größe nach Selectionsort
 /// </summary>
 void selectionsort(int[] givenArray)
 {
@@ -58,6 +58,8 @@ void selectionsort(int[] givenArray)
                     swap(givenArray, border + i, border);                       // Prüft, ob das aktuelle Element das kleinste ist
                 if (givenArray[border + i] > givenArray[maxindex - border]) 
                     swap(givenArray, border + i, maxindex - border);            // Prüft, ob das aktuelle Element das größte ist
+                if (givenArray[border + i] < givenArray[border])
+                    swap(givenArray, border + i, border);
             }
         }
     }
@@ -65,7 +67,7 @@ void selectionsort(int[] givenArray)
 
 // Main
 
-int[] mySortArray = new int[10000];
+int[] mySortArray = new int[10];
 
 randomizeArray(ref mySortArray, 0, 9999);       // Erstellt ein zufälliges Array
 printArray(mySortArray, "Ausgangs");
