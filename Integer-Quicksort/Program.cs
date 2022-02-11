@@ -82,23 +82,42 @@ void swap(int[] array, int left, int right)
 
 // Main
 
-int[] mySortArray = new int[10];
+int l = 100;                                    // Länge des Arrays
 
+int[] mySortArray = new int[l];
 randomizeArray(ref mySortArray, 0, 9999);       // Erstellt ein zufälliges Array
-printArray(mySortArray, "Ausgangs");
+
+int[] beforeArray = new int[l];
+for (int i = 0; i < mySortArray.Length; i++)
+    beforeArray[i] = mySortArray[i];
+
+Console.ForegroundColor = ConsoleColor.Green;
+Console.WriteLine("## Quicksort");
+Console.ForegroundColor = ConsoleColor.White;
+Console.Write("Sortieren gestartet. Es werden ");
+Console.ForegroundColor = ConsoleColor.Cyan;
+Console.Write(l.ToString());
+Console.ForegroundColor = ConsoleColor.White;
+Console.Write(" Elemente sortiert...\n");
 
 Stopwatch sw = new Stopwatch();                 // Stopwatch misst die Zeit, die man braucht
 sw.Start();
-
 quicksort(mySortArray, 0, mySortArray.Length - 1);
-
 sw.Stop();
 
-printArray(mySortArray, "Sortiert");
-
 Console.ForegroundColor = ConsoleColor.Cyan;
-Console.WriteLine("\nReihe wurde sortiert in " + sw.ElapsedMilliseconds.ToString() + " ms\n");
+Console.WriteLine("Reihe wurde sortiert in " + sw.ElapsedMilliseconds.ToString() + " ms");
+Console.ForegroundColor = ConsoleColor.Yellow;
+Console.Write("Werte anzeigen? (y/n) >> ");
 Console.ForegroundColor = ConsoleColor.White;
+
+if (Console.ReadLine() == "y")
+{
+    printArray(beforeArray, "Ausgang");
+    printArray(mySortArray, "Sortiert");
+}
+
+
 
 Console.ReadKey();                              // Wartet, bis Taste gedrückt wird
 Environment.Exit(0);
