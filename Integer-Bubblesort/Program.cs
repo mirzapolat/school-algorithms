@@ -42,13 +42,19 @@ void bubblesort(int[] givenArray)
         for (int ptr = 1; ptr < (givenArray.Length - shell); ptr++)    // Jedes Element im Rahmen wird beobachtet
         {
             if (givenArray[ptr] < givenArray[ptr - 1])                // Der Größte Wert im aktuellen Rahmen wird ans Ende des Rahmens transprotiert
-            {
-                int save = givenArray[ptr - 1];
-                givenArray[ptr - 1] = givenArray[ptr];
-                givenArray[ptr] = save;
-            }
+                swap(givenArray, ptr, ptr - 1);
         }
     }
+}
+
+/// <summary>
+/// Vertauscht zwei Werte innerhalb eines Arrays
+/// </summary>
+void swap(int[] array, int left, int right)
+{
+    int tmp = array[left];
+    array[left] = array[right];
+    array[right] = tmp;
 }
 
 // Main
